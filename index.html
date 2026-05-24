@@ -438,9 +438,7 @@
   </footer>
 
   <script>
-    const IU_PER_UG = 40;
-    const RISE_PER_UG = 0.7;
-    const RISE_PER_1000IU = (1000 / IU_PER_UG) * RISE_PER_UG;
+    const RISE_PER_1000IU = 7; // ng/mL rise per 1000 IU/day (derived: 0.7 nmol/L per 1µg × 25µg per 1000IU → 17.5 nmol/L → 7 ng/mL)
 
     function roundTo500(val) { return Math.round(val / 500) * 500 || 500; }
 
