@@ -299,6 +299,28 @@
 
     footer a { color: var(--text-3); text-decoration: underline; }
 
+    .btn-clear {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 1.25rem;
+      padding: 8px 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-2);
+      background: transparent;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+    }
+
+    .btn-clear:hover { background: var(--surface-2); border-color: #C8C5BC; color: var(--text); }
+    .btn-clear:active { transform: scale(0.97); }
+
+    .btn-clear svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
     @media (max-width: 480px) {
       .results-grid, .proj-grid { grid-template-columns: 1fr; }
       h1 { font-size: 22px; }
@@ -353,6 +375,11 @@
         <div class="bar-target-line" id="bar-target"></div>
       </div>
     </div>
+
+    <button class="btn-clear" id="btn-clear" onclick="clearFields()">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/></svg>
+      Clear for next patient
+    </button>
   </div>
 
   <div class="card">
@@ -478,6 +505,13 @@
       } else {
         warnEl.style.display = 'none';
       }
+    }
+
+    function clearFields() {
+      document.getElementById('level').value = '';
+      document.getElementById('dose').value  = '';
+      document.getElementById('level').focus();
+      calc();
     }
 
     ['level', 'dose', 'target'].forEach(id =>
